@@ -49,9 +49,9 @@ function NavigatorBar(props: NavType) {
 
   
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex items-center">
       <div className="text-slate-400">
-        {page === 1 ? null : (
+        {page === 0 ? null : (
           <button className="mr-1" onClick={() => onPageChange(page - 1)}>
             Prev
           </button>
@@ -60,10 +60,10 @@ function NavigatorBar(props: NavType) {
           <button
             key={index}
             onClick={() => onPageChange(index)}
-            className="mr-1"
+            className="px-2 py-1 mr-1 hover:bg-slate-400 hover:text-white rounded"
           >
             <span className={index === page ? "text-slate-800" : ""}>
-              {index}
+              {index + 1}
             </span>
           </button>
         ))}
@@ -71,15 +71,15 @@ function NavigatorBar(props: NavType) {
           <button onClick={() => onPageChange(page + 1)}>Next</button>
         )}
       </div>
-      <div>
+      <div className="ml-8">
         <select onChange={(e: any) => onSizeChange(Number(e.target.value))}>
           {sizeList.map((tmp) => (
             <option key={tmp} value={tmp}>{tmp}</option>
           ))}
         </select>
       </div>
-      <div className="text-slate-400">
-        <button onClick={handleSort} className="mr-4 text-slate-800">
+      <div className="ml-8 text-slate-400">
+        <button onClick={handleSort} className="mr-1 text-slate-800">
           {sort === SortEnum.ASC ? "↑" : "↓"}
         </button>
         {fieldList.map((tmp, i) => <button key={tmp} className={field === tmp ? "text-slate-800 mr-2" : "mr-2"} onClick={() => onFieldChange(tmp)}>{fieldNameList[i]}</button>)}

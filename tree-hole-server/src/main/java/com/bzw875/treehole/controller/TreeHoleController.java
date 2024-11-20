@@ -34,7 +34,8 @@ public class TreeHoleController {
             return treeHoleService.getAllTreeHoles();
         }
         String sortField = field == null ? "postDate" : field;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sort == "ASC" ? Sort.Direction.ASC : Sort.Direction.DESC, sortField));
+        Pageable pageable = PageRequest.of(page, size,
+                Sort.by(sort.equals("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC, sortField));
         if (likeRange == null || likeRange.equals("")) {
             return treeHoleService.getPageableTreeHoles(pageable);
         } else {

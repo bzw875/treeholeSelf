@@ -1,0 +1,25 @@
+.page-nav {
+    position: absolute;
+    width: 100%;
+}
+.loading-spinner {
+    border-top-color: #ddd; /* 顶部边框颜色，可以自定义 */
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* 应用名为spin的动画，持续1秒，线性运动，无限循环 */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

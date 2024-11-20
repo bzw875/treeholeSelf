@@ -8,7 +8,7 @@ import FilterBar from "./FilterBar";
 import { debounce } from "../utils";
 
 export const DEFAULT_QUERY = {
-  page: 1,
+  page: 0,
   size: 20,
   field: FieldEnum.DATE,
   sort: SortEnum.DESC,
@@ -30,8 +30,11 @@ function App() {
   const [field, setField] = useState(newField);
   const [sort, setSort] = useState(newSort);
   const [likeRange, setLikeRange] = useState(newLikeRange);
+  const [isBottom, setIsBottom] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleQuery = useCallback(debounce(async (page, size, field, sort, likeRange) => {
+    setIsLoading(true);
     try {
       const rps = await backendAPI.fetchAllTreeHole({
         page,
@@ -51,6 +54,7 @@ function App() {
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
+    setIsLoading(false);
   }, 1000), []);
   
   const save2Url = () => {
@@ -70,26 +74,57 @@ function App() {
   }, [page, size, field, sort, likeRange]);
 
 
+  useEffect(() => {
+    const handleScroll = debounce(() => {
+      const scrollEle = document.documentElement;
+      setIsBottom((window.innerHeight + scrollEle.scrollTop) > scrollEle.offsetHeight - 200);
+    }, 100);
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        setPage(page - 1);
+      } else if (event.key === 'ArrowRight') {
+        setPage(page + 1);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('keydown', handleKeyPress);
+
+    // 清理事件监听器
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.addEventListener('keydown', handleKeyPress);
+    };
+  }, []);
+
+
   return (
-    <div>
-      <h1>醇享版</h1>
-      <FilterBar likeRange={likeRange} onLikeRangeChange={num => setLikeRange(num)} />
-      {treeHoles.map((tmp) => (
-        <TreeHoleCell key={tmp.id} treeHole={tmp} />
-      ))}
-      <div>
-        <NavigatorBar
-          page={page}
-          size={size}
-          total={total}
-          sort={sort}
-          field={field}
-          onPageChange={(page) => setPage(page)}
-          onSizeChange={(size) => setSize(size)}
-          onFieldChange={(field) => { setField(field)}}
-          onSortChange={(sort) => {setSort(sort)}}
-        />
-      </div>
+    <div className="relative">
+      <h1 className="text-2xl">醇享版</h1>
+      {isLoading ? <div className="loading-spinner mx-auto"></div> : <div>
+        <div className={"flex mb-4 mt-4 page-nav" + (isBottom ? ' bottom-0' : '' )}>
+          <div className="flex-1">
+          <NavigatorBar
+            page={page}
+            size={size}
+            total={total}
+            sort={sort}
+            field={field}
+            onPageChange={(page) => setPage(page)}
+            onSizeChange={(size) => setSize(size)}
+            onFieldChange={(field) => { setField(field)}}
+            onSortChange={(sort) => {setSort(sort)}}
+          />
+          </div>
+          <FilterBar likeRange={likeRange} onLikeRangeChange={num => setLikeRange(num)} />
+        </div>
+        <div className="pb-20 pt-20">
+          {treeHoles.map((tmp) => (
+            <TreeHoleCell key={tmp.id} treeHole={tmp} />
+          ))}
+        </div>
+      </div>}
     </div>
   );
 }

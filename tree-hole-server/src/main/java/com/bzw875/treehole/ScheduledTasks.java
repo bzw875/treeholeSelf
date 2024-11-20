@@ -33,12 +33,12 @@ public class ScheduledTasks {
     @Autowired
     private TreeHoleService treeHoleService;
 
-    private Integer page = 64;
+    private Integer page = 55;
 
 
-    @Scheduled(fixedRate = 7654)
+    @Scheduled(fixedRate = 4567)
     public void runEvery10Seconds() {
-        if (page > 63) {
+        if (page > 66) {
             return;
         }
         String url = getUrl(page);

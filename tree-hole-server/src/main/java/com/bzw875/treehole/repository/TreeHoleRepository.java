@@ -14,9 +14,9 @@ public interface TreeHoleRepository extends JpaRepository<TreeHole, Long> {
 
     List<TreeHole> findByAuthor(String author);
 
-      Page<TreeHole> findByLikeNumBetween(Integer minLikeNum, Integer maxLikeNum, Pageable pageable);
+    Page<TreeHole> findByLikeNumBetween(Integer minLikeNum, Integer maxLikeNum, Pageable pageable);
 
-     Page<TreeHole> getTreeHoldByLikeNumGreaterThan(Integer minLikeNum, Pageable pageable);
+    Page<TreeHole> getTreeHoldByLikeNumGreaterThan(Integer minLikeNum, Pageable pageable);
 
     @Query("SELECT u FROM TreeHole u WHERE u.author LIKE %:keyword% OR u.context LIKE %:keyword%")
     List<TreeHole> searchByContextOrAuthor(@Param("keyword") String keyword);

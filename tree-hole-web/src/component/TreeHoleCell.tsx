@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 function TreeHoleCell(props: {treeHole: TreeHoleType}) {
     const { id, author, context, dataId, dislikeNum, likeNum, commentNum, postDate } = props.treeHole;
   return (
-    <div className='text-sm	text-slate-400'>
+    <div className='text-base	text-slate-400 mb-12'>
         <div className='flex mb-2'>
-            <Link target='_blank' to={"/author/" + author}>{author}</Link>
+            <Link target='_blank' className='text-slate-800' to={"/author/" + author}>{author}</Link>
             <a className='ml-4' href={"https://jandan.net/t/" + dataId} target='_blank'>{dataId}</a>
             <div className='flex flex-1 justify-end'>
               <div>{timeFromNow(postDate)}</div>
@@ -17,7 +17,6 @@ function TreeHoleCell(props: {treeHole: TreeHoleType}) {
             </div>
         </div>
         <div className='text-slate-800'>{context}</div>
-        <hr className='mt-6 mb-6'/>
     </div>
   );
 }

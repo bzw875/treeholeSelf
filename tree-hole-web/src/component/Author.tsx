@@ -28,7 +28,7 @@ function Author() {
 
   return (
     <div className="container w-[900px] mx-auto p-4">
-      <h1>{author}</h1>
+      <h1 className="text-2xl mb-8">{author}</h1>
       {treeHoles.map(tmp => <TreeHoleCell treeHole={tmp} />)}
     </div>
   );
