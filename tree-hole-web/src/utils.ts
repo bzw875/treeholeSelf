@@ -35,7 +35,7 @@ type DebounceFunc<T extends any[]> = (...args: T) => void;
 export function debounce<T extends any[]>(func: DebounceFunc<T>, wait: number): DebounceFunc<T> {
     let timeoutId: number | null = null;
 
-    return function(...args: T): void {
+    return function(this: void, ...args: T): void {
         if (timeoutId !== null) {
             clearTimeout(timeoutId);
         }

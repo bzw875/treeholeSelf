@@ -30,7 +30,7 @@ function NavigatorBar(props: NavType) {
   const pages = Math.ceil(total / size);
   const pageList = useMemo(() => {
     const arr = [page];
-    const offset = 10;
+    const offset = 5;
     for (let i = page + 1; i < Math.min(page + offset, pages); i++) {
       arr.push(i);
     }
@@ -47,6 +47,9 @@ function NavigatorBar(props: NavType) {
   const fieldList = [FieldEnum.DATE, FieldEnum.LIKE, FieldEnum.DISLIKE, FieldEnum.COMMENT];
   const fieldNameList = ['日期', '喜欢', '不喜欢', '评论']
 
+  if (total === 0) {
+    return;
+  }
   
   return (
     <div className="flex items-center">

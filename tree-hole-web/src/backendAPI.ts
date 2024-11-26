@@ -1,7 +1,13 @@
 import { SortEnum, FieldEnum, RangeNum } from "./interface";
 import axios from 'axios';
 
-const baseURL = '/backend';
+let baseURL = '/backend';
+
+if (import.meta.env.DEV) {
+  baseURL = '/backend';
+} else if (import.meta.env.PROD) {
+  baseURL = 'http://127.0.0.1:8080/';
+}
 
 
 const instance = axios.create({

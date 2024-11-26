@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useState } from 'react'
 import '../App.css'
 import { backendAPI } from '../backendAPI';
 import { TreeHoleType } from '../interface';
@@ -10,11 +10,12 @@ function Search() {
   const [treeHoles, setTreeHoles] = useState<TreeHoleType[]>([]);
   const [search, setSearch] = useState('');
 
+
   const handleSearch = useCallback(debounce((value) => {
     performSearch(value);
   }, 500), []);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearch(value);
     handleSearch(value);

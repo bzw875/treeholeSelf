@@ -36,9 +36,9 @@ public class ScheduledTasks {
     private Integer page = 100;
 
 
-    @Scheduled(fixedRate = 4567)
+    @Scheduled(fixedRate = 3456)
     public void runEvery10Seconds() {
-        if (page > 66) {
+        if (page > 63) {
             return;
         }
         String url = getUrl(page);
@@ -59,7 +59,6 @@ public class ScheduledTasks {
         for (TreeHole th : ths) {
             String dataId = th.getDataId();
             List<TreeHole> curs = treeHoleService.getTreeHoleByData_id(dataId);
-            System.out.println(dataId + "： size:" + curs.size());
             if (curs.size() == 0) {
                 treeHoleService.createTreeHole(th);
             } else {

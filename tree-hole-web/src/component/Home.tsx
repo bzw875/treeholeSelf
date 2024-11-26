@@ -35,6 +35,8 @@ function App() {
 
   const handleQuery = useCallback(debounce(async (page, size, field, sort, likeRange) => {
     setIsLoading(true);
+    setTreeHoles([]);
+    setTotal(0);
     try {
       const rps = await backendAPI.fetchAllTreeHole({
         page,
@@ -65,7 +67,7 @@ function App() {
       field,
       likeRange
     }
-    const urlStr = '#?' + new URLSearchParams(params);
+    const urlStr = '#?' + new URLSearchParams(params as any);
     location.hash = urlStr;
     localStorage.setItem('pageVisit', urlStr)
   }

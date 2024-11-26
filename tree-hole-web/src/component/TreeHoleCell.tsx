@@ -3,7 +3,7 @@ import { timeFromNow } from '../utils';
 import { Link } from 'react-router-dom';
 
 function TreeHoleCell(props: {treeHole: TreeHoleType}) {
-    const { id, author, context, dataId, dislikeNum, likeNum, commentNum, postDate } = props.treeHole;
+    const { author, context, dataId, dislikeNum, likeNum, commentNum, postDate } = props.treeHole;
   return (
     <div className='text-base	text-slate-400 mb-12'>
         <div className='flex mb-2'>

@@ -16,7 +16,6 @@ function App() {
         <nav className='flex mb-4 bg-gray-100 p-4 rounded-lg'>
           <ul className='flex flex-row items-center flex-1'>
             <li className='mr-4'><Link to="/">Home</Link></li>
-            <li className='mr-4'><Link to="/author/满街乱逛者">Author</Link></li>
             <li className='mr-4'><Link to="/Search">Search</Link></li>
           </ul>
           <Account />

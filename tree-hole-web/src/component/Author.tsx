@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import '../App.css'
 import { backendAPI } from '../backendAPI';
-import { SortEnum, FieldEnum, TreeHoleType } from '../interface';
+import { TreeHoleType } from '../interface';
 import TreeHoleCell from './TreeHoleCell';
 
 function Author() {
