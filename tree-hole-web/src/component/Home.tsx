@@ -43,7 +43,7 @@ function App() {
         sort,
         likeRange,
       });
-      const data: any = await rps.json();
+      const data: any = rps.data;
       if (data.content) {
         setTreeHoles(data.content || []);
         setTotal(data.totalElements);
@@ -65,7 +65,9 @@ function App() {
       field,
       likeRange
     }
-    location.hash = '#?' + new URLSearchParams(params);
+    const urlStr = '#?' + new URLSearchParams(params);
+    location.hash = urlStr;
+    localStorage.setItem('pageVisit', urlStr)
   }
 
   useEffect(() => {

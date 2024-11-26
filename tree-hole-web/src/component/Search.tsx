@@ -26,7 +26,7 @@ function Search() {
     }
     try {
       const rps = await backendAPI.searchTreeHole(value);
-      const data: any = await rps.json();
+      const data: any = rps.data;
       setTreeHoles(data || []);
     } catch (error) {
       console.error('Error fetching data: ', error);

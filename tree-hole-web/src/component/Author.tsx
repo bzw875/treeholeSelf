@@ -12,7 +12,7 @@ function Author() {
   const getData = async () => {
     try {
       const rps = await backendAPI.findByAuthor(author || '');
-      const data: any = await rps.json();
+      const data: any = rps.data;
       setTreeHoles(data || []);
     } catch (error) {
       console.error('Error fetching data: ', error);

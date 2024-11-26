@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort;
 
 @RestController
 @RequestMapping("/treeHole")
-@CrossOrigin(origins = "http://localhost:5173")
 public class TreeHoleController {
 
     private final TreeHoleService treeHoleService;

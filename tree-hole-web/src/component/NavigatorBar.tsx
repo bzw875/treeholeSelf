@@ -60,7 +60,7 @@ function NavigatorBar(props: NavType) {
           <button
             key={index}
             onClick={() => onPageChange(index)}
-            className="px-2 py-1 mr-1 hover:bg-slate-400 hover:text-white rounded"
+            className="px-2 py-1 hover:bg-slate-400 hover:text-white rounded"
           >
             <span className={index === page ? "text-slate-800" : ""}>
               {index + 1}
