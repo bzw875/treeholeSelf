@@ -108,7 +108,6 @@ function App() {
       <h1 className="text-2xl">醇享版</h1>
       {isLoading ? <div className="loading-spinner mx-auto"></div> : <div>
         <div className={"flex mb-4 mt-4 page-nav" + (isBottom ? ' bottom-0' : '' )}>
-          <div className="flex-1">
           <NavigatorBar
             page={page}
             size={size}
@@ -120,10 +119,9 @@ function App() {
             onFieldChange={(field) => { setField(field)}}
             onSortChange={(sort) => {setSort(sort)}}
           />
-          </div>
           <FilterBar likeRange={likeRange} onLikeRangeChange={num => setLikeRange(num)} />
         </div>
-        <div className="pb-20 pt-20">
+        <div className="tree-hole-list pt-20">
           {treeHoles.map((tmp) => (
             <TreeHoleCell key={tmp.id} treeHole={tmp} />
           ))}

@@ -58,6 +58,7 @@ public class ScheduledTasks {
     public void save2Db(List<TreeHole> ths) {
         for (TreeHole th : ths) {
             String dataId = th.getDataId();
+            System.out.println(th.getAuthor());
             List<TreeHole> curs = treeHoleService.getTreeHoleByData_id(dataId);
             if (curs.size() == 0) {
                 treeHoleService.createTreeHole(th);

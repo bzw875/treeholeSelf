@@ -52,7 +52,7 @@ function NavigatorBar(props: NavType) {
   }
   
   return (
-    <div className="flex items-center">
+    <>
       <div className="text-slate-400">
         {page === 0 ? null : (
           <button className="mr-1" onClick={() => onPageChange(page - 1)}>
@@ -87,7 +87,7 @@ function NavigatorBar(props: NavType) {
         </button>
         {fieldList.map((tmp, i) => <button key={tmp} className={field === tmp ? "text-slate-800 mr-2" : "mr-2"} onClick={() => onFieldChange(tmp)}>{fieldNameList[i]}</button>)}
       </div>
-    </div>
+    </>
   );
 }
 

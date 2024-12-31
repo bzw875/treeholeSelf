@@ -27,7 +27,7 @@ function Author() {
   if (!treeHoles.length) return <div>Loading...</div>;
 
   return (
-    <div className="container w-[900px] mx-auto p-4">
+    <div className="container  mx-auto p-4">
       <h1 className="text-2xl mb-8">{author}</h1>
       {treeHoles.map(tmp => <TreeHoleCell treeHole={tmp} />)}
     </div>
