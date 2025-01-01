@@ -44,3 +44,14 @@
         padding: 100px 0 50px;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: black;
+      color: white;
+    }
+    input,select {
+        background-color: #3e3e3e;
+        color: #fff;
+    }
+  }

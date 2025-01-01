@@ -13,7 +13,7 @@ function App() {
 
   <Router>
       <div className="container  mx-auto p-4">
-        <nav className='flex mb-4 bg-gray-100 p-4 rounded-lg'>
+        <nav className='flex mb-4 p-4 rounded-lg'>
           <ul className='flex flex-row items-center flex-1'>
             <li className='mr-4'><Link to="/">Home</Link></li>
             <li className='mr-4'><Link to="/Search">Search</Link></li>
