@@ -14,6 +14,7 @@ const instance = axios.create({
   baseURL,
   timeout: 100000,
   maxRedirects: 0,
+  withCredentials: true,
 });
 
 // 请求拦截器
@@ -27,6 +28,17 @@ instance.interceptors.request.use(
     return config;
   },
   error => {
+    return Promise.reject(error);
+  }
+);
+
+instance.interceptors.response.use(
+  response => {
+    console.log(response);
+    return response;
+  },
+  (error, response) => {
+    console.log(error, response);
     return Promise.reject(error);
   }
 );
