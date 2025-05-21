@@ -24,8 +24,13 @@ import java.time.Year;
 import static java.lang.Integer.parseInt;
 
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 public class ScheduledTasks {
@@ -33,12 +38,13 @@ public class ScheduledTasks {
     @Autowired
     private TreeHoleService treeHoleService;
 
-    private Integer page = 100;
+    private Integer page = 1;
+    private Integer integer;
 
 
     @Scheduled(fixedRate = 3456)
     public void runEvery10Seconds() {
-        if (page > 63) {
+        if (page > 2) {
             return;
         }
         String url = getUrl(page);
@@ -48,11 +54,7 @@ public class ScheduledTasks {
     }
 
     public String getUrl(int page) {
-        Date d = new Date();
-        String str = Year.now() + "" + (d.getMonth() + 1) + "" + d.getDate() + "-" + page;
-        String baseStr = Base64.getEncoder().encodeToString(str.getBytes());
-        System.out.println(str + " " + baseStr);
-        return "https://jandan.net/treehole/" + baseStr;
+        return "https://jandan.net/api/comment/post/102312?order=desc&page=" + page;
     }
 
     public void save2Db(List<TreeHole> ths) {
@@ -78,17 +80,27 @@ public class ScheduledTasks {
     public List<TreeHole> fetchLinks(String url) {
         List<TreeHole> ths = new ArrayList<>();
         try {
-            Document doc = Jsoup.connect(url).get();
-//            String filePath = "/Users/mac/workspace/java/treehole2/00.html";
-//            String html = new String(Files.readAllBytes(Paths.get(filePath)));
-//            Document doc = Jsoup.parse(html);
+            RestTemplate restTemplate = new RestTemplate();
 
-            // 选择所有链接
-            Elements linkElements = doc.select(".commentlist>li");
-            for (Element li : linkElements) {
-                ths.add(this.createRecord(li));
-            }
-        } catch (IOException e) {
+            // 设置请求头
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("Referer", "https://jandan.net/treehole");
+            headers.set("Cookie", "_ga=GA1.1.551619986.1747749730; __gads=ID=eb3ff71e1d41b81a:T=1747749729:RT=1747749729:S=ALNI_MaOhYFQ_DmVRxmETtswav4EKjKa5A; __gpi=UID=000010c9301b9b31:T=1747749729:RT=1747749729:S=ALNI_MYr0_X10yulYbxW4EHIyYYE6FS-Pw; __eoi=ID=315ab227e3e627f7:T=1747749729:RT=1747749729:S=AA-Afja8tWo4EGlG3Gprm-ZhUWCe; PHPSESSID=hntvqv0srd6kgbhc7t0njv6l4g; egg_data=MTc0Nzc0OTgzOHxKQktTSzVqUXItSVZ5Z1pWamt6YlJmbGlwVzg2Rm5pQUlxcEFFM3JLSHZhaFhTSnNNam1tUnpmbGMzS00wcWFNeUE4PXzIhYKlipKRnQsueS3IykKVCiWR8lmNnQX8_7fcnEByjQ==; egg_auth=MTc0Nzc0OTg0OHx0V2lfODZUQUczcHlpWndNX2RMZzZndnVjejFXazJXREJubmxvdGJYclRCWmdwVnd0TG5oN2ZSOWhYLUNma3hOfI1iCY0rbB4n9bMs3YGHFStEHxdd3aPQVRNSEld2Vclc; egg_login_uid=5177; egg_login_nickname=%E8%BF%98%E5%BE%88%E4%B8%8D%E5%91%A2%E7%A7%AF%E6%9E%81; _ga_ZDE403EQ65=GS2.1.s1747749729$o1$g1$t1747749853$j32$l0$h0");
+            headers.set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36");
+
+            // 发送 POST 请求
+            ResponseEntity<String> response = restTemplate.getForEntity(
+                    url,
+                    String.class
+            );
+
+            // 打印响应 JSON
+            System.out.println("Response JSON: " + response.getBody());
+//            for (Element li : linkElements) {
+//                ths.add(this.createRecord(li));
+//            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return ths;
