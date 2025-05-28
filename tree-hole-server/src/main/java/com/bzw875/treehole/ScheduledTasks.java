@@ -39,6 +39,7 @@ public class ScheduledTasks {
 
     @Autowired
     private RestTemplate restTemplate;
+    private Integer integer;
 
 
     @Scheduled(fixedRate = 6543)
@@ -104,6 +105,30 @@ public class ScheduledTasks {
 //            for (Element li : linkElements) {
 //                ths.add(this.createRecord(li));
 //            }
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+
+            // 设置请求头
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("Referer", "https://jandan.net/treehole");
+            headers.set("Cookie", "_ga=GA1.1.551619986.1747749730; __gads=ID=eb3ff71e1d41b81a:T=1747749729:RT=1747749729:S=ALNI_MaOhYFQ_DmVRxmETtswav4EKjKa5A; __gpi=UID=000010c9301b9b31:T=1747749729:RT=1747749729:S=ALNI_MYr0_X10yulYbxW4EHIyYYE6FS-Pw; __eoi=ID=315ab227e3e627f7:T=1747749729:RT=1747749729:S=AA-Afja8tWo4EGlG3Gprm-ZhUWCe; PHPSESSID=hntvqv0srd6kgbhc7t0njv6l4g; egg_data=MTc0Nzc0OTgzOHxKQktTSzVqUXItSVZ5Z1pWamt6YlJmbGlwVzg2Rm5pQUlxcEFFM3JLSHZhaFhTSnNNam1tUnpmbGMzS00wcWFNeUE4PXzIhYKlipKRnQsueS3IykKVCiWR8lmNnQX8_7fcnEByjQ==; egg_auth=MTc0Nzc0OTg0OHx0V2lfODZUQUczcHlpWndNX2RMZzZndnVjejFXazJXREJubmxvdGJYclRCWmdwVnd0TG5oN2ZSOWhYLUNma3hOfI1iCY0rbB4n9bMs3YGHFStEHxdd3aPQVRNSEld2Vclc; egg_login_uid=5177; egg_login_nickname=%E8%BF%98%E5%BE%88%E4%B8%8D%E5%91%A2%E7%A7%AF%E6%9E%81; _ga_ZDE403EQ65=GS2.1.s1747749729$o1$g1$t1747749853$j32$l0$h0");
+            headers.set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36");
+
+            // 发送 POST 请求
+            ResponseEntity<String> response = restTemplate.getForEntity(
+                    url,
+                    String.class
+            );
+
+            // 打印响应 JSON
+            System.out.println("Response JSON: " + response.getBody());
+//            for (Element li : linkElements) {
+//                ths.add(this.createRecord(li));
+//            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return ths;
     }
 

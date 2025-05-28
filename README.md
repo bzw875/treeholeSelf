@@ -9,3 +9,9 @@ spring boot，JPA
 
 #### tree-hole-web 前端代码
 react、vite、react-router-dom
+
+
+### 启动后端服务
+```
+nohup java -jar treehole-0.0.1-SNAPSHOT.jar  --spring.config.location=application.properties &
+```
