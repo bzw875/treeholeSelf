@@ -1,12 +1,12 @@
-import { SortEnum, FieldEnum, RangeNum } from "./interface";
+import { SortEnum, FieldEnum, RangeNum, TreeHoleType } from "./interface";
 import axios from 'axios';
 
 let baseURL = '/backend';
 
 if (import.meta.env.DEV) {
-  baseURL = '/backend';
+  baseURL = '/api';
 } else if (import.meta.env.PROD) {
-  baseURL = '/backend';
+  baseURL = '/api';
 }
 
 
@@ -55,6 +55,14 @@ interface queryType {
     likeRange: string;
 }
 
+interface ResponseType<T> {
+  code: number;
+  data: {
+    list: T[];
+    total: number;
+  }
+}
+
 export const backendAPI = {
     fetchAllTreeHole: (params: queryType) => {
         const p = {
@@ -63,17 +71,17 @@ export const backendAPI = {
             page: String(params.page),
             size: String(params.size)
         };
-        return instance.get('/treeHole?' + new URLSearchParams(p));
+        return instance.get<ResponseType<TreeHoleType>>('/treehole?' + new URLSearchParams(p));
     },
 
     findByAuthor: (author: string) => {
-        return instance.get('/treeHole/author/' + author);
+        return instance.get<ResponseType<TreeHoleType>>('/treehole/author/' + author);
     },
     
     searchTreeHole: (keyword: string) => {
-        return instance.get('/treeHole/search?q=' + keyword)
+        return instance.get<ResponseType<TreeHoleType>>('/treehole/search?q=' + keyword)
     },
     login: (username: string, password: string) => {
-        return instance.get(`/api/login?username=${username}&password=${password}`);
+        return instance.get('/login?username=' + username + '&password=' + password);
     },
 }

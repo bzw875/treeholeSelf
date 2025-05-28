@@ -1,25 +1,31 @@
 export interface TreeHoleType {
     id: number;
     author: string;
-    context: string;
-    dataId: string;
-    likeNum: number;
-    dislikeNum: number;
-    commentNum: number;
-    postDate: Date;
+    content: string;
+    post_id: string;
+    vote_positive: number;
+    vote_negative: number;
+    sub_comment_count: number;
+    date_gmt: Date;
     createdAt: Date;
+    ip_location: string;
     updatedAt: Date;
+    images: string | null;
+    author_type: number;
+    user_id: number;
 }
+
+  
 export enum SortEnum {
     ASC = 'ASC',
     DESC = 'DESC'
 }
 
 export enum FieldEnum {
-    LIKE = 'likeNum',
-    DISLIKE = 'dislikeNum',
-    COMMENT = 'commentNum',
-    DATE = 'postDate',
+    LIKE = 'vote_positive',
+    DISLIKE = 'vote_negative',
+    COMMENT = 'sub_comment_count',
+    DATE = 'date_gmt',
 }
 export enum RangeNum {
     NoLimit = '0-∞',

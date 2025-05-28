@@ -45,17 +45,10 @@ function App() {
         sort,
         likeRange,
       });
-      const data: any = rps.data;
-      if (data.content) {
-        if (Array.isArray(data.content)) {
-          setTreeHoles(data.content || []);
-          setTotal(data.totalElements);
-        }
-      } else {
-        if (Array.isArray(data)) {
-          setTreeHoles(data || []);
-          setTotal(data.length);
-        }
+      const {code, data: {list, total}} = rps.data;
+      if (code === 200) {
+        setTreeHoles(list || []);
+        setTotal(total);
       }
     } catch (error) {
       console.error("Error fetching data: ", error);
