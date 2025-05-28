@@ -35,10 +35,13 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   response => {
     console.log(response);
+    if (response.data.code === 401) {
+      localStorage.removeItem('userInfo');
+    }
     return response;
   },
-  (error, response) => {
-    console.log(error, response);
+  (error) => {
+    console.log(error);
     return Promise.reject(error);
   }
 );

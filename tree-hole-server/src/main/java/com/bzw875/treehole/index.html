@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        树洞 </title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="robots" content="index,follow">
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAA7CAMAAADy+wKBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMBQTFRF/OFs49bY5ZwC+9dJ/NtT89aJ9boD+dll8vDp87QE66MD+Moz+MEB6uLi9sQm6q0U7bUn87oa8Ozm5KEB7qkD26wQ9MlW9tV198tG8rom5tzg67g37ejk8K0E7sNY+dE72bos7bEa+ckV/OBc3MuR7chl9M1k7r1C6aoO2sh26aUM4dPA56EH4JoA4NGl781077AC6uPp3sZP889w8bwx5qgJ78FN8NF++s8o996G2MA49L0O7unn5qcB8/Pr8/LqIWUuyAAABMtJREFUeNrs1dt2qsoSBuBWCAiooKDBUxDPJzIxkWiMhPd/q/VXNSBmZuyLfbUu1o8JDuivq7phJCKdxPHA1591Xejir3yKz89A06zPIk/4fCRuFPXe9yKO484zJEfMMX7+U180zS/p04vtIuunpyeRxrFh6Yzn+pxCev6gZ5qmS/vcjwFT5wx6FmgZlX1QVVfnRR74p9rUZlIaaeqmo/cnomfhgRqG1lZUxnee98CYlqzr/lfseelgdYajcF1YrWmpeR6s1Dq61jQDQwf98/n5/Of8B6G6BllNmym6WubeAO8+WQxrr56f3yl/2HJd3GkigQKl3DV7fS70oNmE1VQJV8v3JUV4E+65yXimgCqKms8xl/UDuoXpfRRdUZbLwk5kz03GgZKnrB/M6PoM2NdZ9pcvfPy01HclqnJhGah6oBltXV/1V/0+IIdsXLXNS8UWUlVXqmUYfp/yUkR4ReFmoWcBRVGCXNIOKGpf0YwvyI/+ywfyggNWPt9HrATB5b5+X+nj0zZiq//hf5Shun/jC8vZjOYIAh8nxfd9Y9Jhuf5YU5bcc24r+t47x/IpnUm8LuB6NNqyBdaMH/iC2tbFqsS3Yq9TwNHoehZmvlmPWpvl4K7X1jr0vJOEI2e03LONGd8bpwna1qVttenHauNzsk6n08AznZGkzvT1SJa6rmI5Q7uaU/tEmZg2Qyfsve1vwjTzFf/EX1U7oJxGIQo7sGF4XR6P4pBjQ2qtWDfjzqzdwTGQcU7OJg1HTmj37Lfh8SbqB2lLnWODcKdM6MAORmGSOI5tJ2+vLbImFZbcMIx7cRwV2XEGDuo6qWvbvc10MTyOYVHYzDeMNrycwDDiLyh8OB2HV5q4ySax3/Yo24U1i9K8Z/znK6aDvoRGOAltUEgUJuumvbfXI2gDtk7W9MrOJ7KDmE5hOLGhJcb+2kkUudfXYWtcWqllJnQgONFcNqrig43Ck7E3aRRhsa3juNv4FlG9XuXFDBT6vvHsSd4zZJK6UQ8UZRuNTNRzzFbG4xXI02ZjU2XERtE0cqfbGqqCNhoiKizxg/kj3m4HjKZJ4j8RNUxlu1229Qom71btztuhMo6NSdKdLmolzeR6D/UDx8TD5sW7B/SACzvU3SU7PBm3jv+510rVjPeKhtConTzxJAdMgBkOprs7pFJGve0edEw0A2XrkrB31Jq9y+eguHUcFLQSRWneb0kz3isXL5rcEewJdmUjNYyLuxHVzIvSOyEb/s4y0cP1upuiMB4iDnoYNtYI6vLmMe1NX2v3pUqaicW0x6VTlKZ3gDAKJ3mrBF3sUa3st6SZGO4X12nPpdrpZCNbThJ+ltwrSl4Xsl251KygmTgOh5KnzNPUww9tUA6n2z13ey+aSUm21YKu7Rdb8B4/DjwQvAYu3HX7WmN5JAl6L0r2dhtLTXy7nV6nlOv1ul0sqGJZsyha0kx0u7cxdGuYT1Dbc2q1wtE6+cFkD0XJNhqYcsyc65dp5fCWd8uySjORNaS+Ff6eMe+sfBeyx3bzuvglOTXPacnTrXvLodyinzQT3zwlcfYPaRTwN0mWL8sxebrFFxqQw78lrVfe+ubaWenl18rN321WjHgc9Nu13+zj4Eqy/xWR/f/5z/777T8CDADNtrnx+A7+7AAAAABJRU5ErkJggg==">
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz6///M+v//zPr//8z6///M+v//zPr//84Zf//OGX//zhl//84Zf//M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///OGX//zhl//84Zf//OGX//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zhl//84Zf//OGX//zhl//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zM0Nv8zNDb/M+v//zPr//8z6///M+v//zPr//8z6///MzQ2/zM0Nv8z6///M+v//zPr//8z6///M+v//zPr//8zNDb/MzQ2/zPr//8z6///M+v//zPr//8z6///M+v//zM0Nv8zNDb/M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M9n//zPZ//8z2f//M9n//zPr//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M9n//zPZ//8z2f//M9n//wAAAAAAAAAAAAAAADPZ//8z6///M+v//zPr//8z6///M+v//zPr//8z6///M+v//zPZ//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAz2f//M9n//zPZ//8z2f//M9n//zPZ//8z2f//M9n//zPZ//8z2f//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADc14/83NeP/NzXj/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3NeP/NzXj/zc14/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANzXj/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgBwAA4AcAAP4/AAD+PwAA/v8AAA=="/>
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/wp-content/themes/jandan2025/static/20250418102219/85f6501d42d1d44205321fa8d68e35d548pqx2o7.css">
+    <script>
+        const $JANDAN = {
+            GO_API: false,
+            IS_MOBILE : false,
+            COOKIE_HASH : '01b0531fab6a989460dd1b231010b496',
+            SITE_URL : 'http://jandan.net',
+            API_URL : '//jandan.net'
+        };
+        if (window !== top) top.location.href = window.location.href;
+        eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(g(){1 d=["j","a","0","d","a","0",".","0","e","f"];1 3=7 8(d.2(\'\')+\'$\');4(!3.9(b.c)){1 a=5.6.h;4(a==\'/\'){a=\'\'}5.6.i=\'k://\'+d.2(\'\')+\'/\'+a}})($l);',22,22,'n|var|join|r|if|window|location|new|RegExp|test||document|domain|||t|function|pathname|href||http|JANDAN'.split('|'),0,{}));
+    </script>
+</head>
+<body>
+<div class="container mt-4 wrapper" id="main-warpper">
+    <header class="text-white text-center py-1" id="header">
+        <div class="logo">
+            <a href="/">
+                <img src="/wp-content/themes/jandan2025/images/logo2025.png" srcset="/wp-content/themes/jandan2025/images/logo2025.png 1x, /wp-content/themes/jandan2025/images/logo2025-2.png 2x" width="120" height="50" alt="煎蛋网"></a>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark" id="nav">
+        <div class="container">
+            <div class="collapse navbar-collapse position-relative" id="navbar">
+                <ul class="navbar-nav align-middle">
+                    <li class="nav-item"><a class="nav-link p-1" href="/">首页</a></li>
+                    <li class="nav-item"><a class="nav-link p-1" href="/qa">问答</a></li>
+                    <li class="nav-item"><a class="nav-link p-1" href="/treehole">树洞</a></li>
+                    <li class="nav-item"><a class="nav-link p-1" href="/ooxx">随手拍</a></li>
+                    <li class="nav-item"><a class="nav-link p-1" href="/pic">无聊图</a></li>
+                    <li class="nav-item"><a class="nav-link p-1" href="/bbs">鱼塘</a></li>
+                    <li class="nav-item"><a class="nav-link p-1" href="/top">热榜</a></li>
+                </ul>
+                <div class="position-absolute top-0 end-0">
+                    <a class="nav-link  p-1" href="/member">
+                        <i class="bi bi-person-fill d-md-none"></i>
+                        <span class="d-none d-md-inline-block">用户中心</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav> <div class="container">
+    <div class="row">
+        <main class="main col-lg-8 col-md-8 col-12">
+            <div class="row">
+                <nav aria-label="breadcrumb" class="breadcrumb">
+                    <ol>
+                        <li class="breadcrumb-item"><a href="/">主页</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">树洞</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="p-0">
+                    <h1 class="post-h1 p-2">树洞</h1>
+                </div>
+                <div class="post">
+                    <div class="post-content">
+                        <h5>“每个人都需要一个树洞，存放那些无法言说的秘密和情绪”</h5>
+                        <blockquote><p>北京市心理援助热线： 010-82951332<br />
+                            全国各地心理危机干预热线：http://anseeing.com/hotlines/</p></blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="comment" id="jandan-app"></div>
+            </div>
+            <script>
+                const PAGE = {
+                    id: 102312                        };
+            </script>
+        </main>
+        <aside class="col-lg-4 col-md-4 d-none d-md-block sidebar">
+            <div class="row">
+                <div class="search-form">
+                    <form action="https://www.bing.com/search" method="get" onsubmit="_submit()" id="searchform" target="_blank">
+                        <input type="text" name="q" id='bingsearch' onfocus="_onfocus()" value="" placeholder="搜索：" required>
+                        <input type="hidden" name="site" value="jandan.net">
+                    </form>
+                    <script>
+                        function _submit() {
+                            document.getElementById("bingsearch").value =document.getElementById("bingsearch").value +' site:jandan.net' ;
+                        }
+                        function _onfocus(){
+                            document.getElementById("bingsearch").value = '';
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="nav-header">广告</h3>
+                <div class="text">
+                    <script>
+                        (function() {
+                        var str = ['img.toto.im/mw600/00745YaMgy1i0gj2ewkx7j31gw0hsgs9.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2fcuzpj31270cqmz3.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2fjcjfj31gw0hswmi.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2fqbpuj31gw0hsn09.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2fwouzj313d0d4gnp.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2g2oiej315d0dsq57.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2g94jaj31gw0hstcf.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2gffs6j31gw0hs79z.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2gledvj31gw0hswlp.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2grn1zj31gw0hs0yj.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2gyr7kj31gw0hsn31.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2h47uhj31gw0hsjzv.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2haf2mj31gw0hsq8e.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2hocrjj31gw0hsgso.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2hvb2cj31gw0hsafx.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2i0lv5j31gw0hsq9u.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2itj9bj31gw0hs7a3.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2jgcubj31gw0hsk28.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2jmsizj31gw0hswp3.jpg',
+                        'img.toto.im/mw600/00745YaMgy1i0gj2jt2lpj31gw0hsjwk.jpg',];
+                        var a=str[parseInt(Math.random()*(str.length))];
+                        document.write('<div style="padding-bottom:12px;"><a href="//jandan.net/money.php?redirect_id=242" target="_blank" rel="external nofollow"><img src="//'+a+'" border="0" width="100%"></a></div>');
+                        })();
+                    </script><span class="dot" data-id="242"></span> <div style="padding-bottom:12px;"><a href="//jandan.net/money.php?redirect_id=243" rel="external nofollow" target="_blank"><img src="https://img.toto.im/mw1024/00745YaMgy1hzb3gqc6kaj30xc0b4wi6.jpg" width="100%" /></a></div><span class="dot" data-id="243"></span> </div>
+            </div>
+            <div class="row">
+                <h3 class="nav-header">公告栏</h3>
+                <div class="text">
+                    <ul>
+                        <li>* 煎蛋网站全新改版上线</li>
+                        <li>* 反馈：sein@jandan.com</li>
+                        <li>* 投稿：微信搜小程序煎蛋</li>
+                        <li>* APP：<a href="https://jandan.net/app">jandan.net/app</a></li>
+                        <li>* 公众号：王摸鱼</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="nav-header">鱼塘</h3>
+                <div id="sidebar-bbs"></div>
+                <script type="text/html" id="sidebar-bbs-tpl">
+                    <ul class="bbs-list">
+                        {{each list}}
+                        {{if $index <= 10}}
+                        <li><a href="/bbs#/topic/{{$value.post_id}}">* {{$value.title}} </a></li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </script>
+            </div>
+            <div class="row">
+                <div id="float-window">
+                    <h3 class="nav-header">广告</h3>
+                    <div class="text text-center">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4352453996606420" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4352453996606420" data-ad-slot="7001170194" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script><span class="dot" data-id="233"></span> </div>
+                    <h3 class="nav-header">广告</h3>
+                    <div class="text text-center">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4352453996606420" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4352453996606420" data-ad-slot="9456096016"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script> </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+    <footer class="bg-dark text-white text-center py-4" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a href="/about" class="text-white">关于我们</a> ·
+                    <a href="/guanyu" class="text-white">用户协议</a> ·
+                    <a href="/privacy" class="text-white">隐私政策</a> ·
+                    <a href="/app" class="text-white">煎蛋APP</a>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" class="text-white" rel="external nofollow">鄂ICP备11008023号-1</a> ·
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502002747" target="_blank" class="text-white" rel="external nofollow">鄂公网安备42018502002747号</a>
+                </div>
+                <div class="col-12 text-center">
+                    举报电话 13125131232 · 举报邮箱 jubao@jandan.com
+                </div>
+                <div class="col-12 text-center">
+                    <a href="/jubao" class="text-white">煎蛋举报入口</a> ·
+                    <a target="_blank" href="https://www.12377.cn/" class="text-white">网信办违法和不良信息举报中心</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="nav_top" title="回到页头"><span>▲</span></div>
+</div>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.5.1/jquery.min.js" type="application/javascript"></script>
+<script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.1.3/js/bootstrap.bundle.js" type="application/javascript"></script>
+<script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery.lazyload/1.9.1/jquery.lazyload.min.js" type="application/javascript"></script>
+<script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/art-template/4.13.2/lib/template-web.min.js" type="application/javascript"></script>
+<script>
+
+    // 定义模板渲染过滤器
+    template.defaults.imports.renderImageHTML = function(content) {
+        let $dom = $('<div>').append($.parseHTML(content));
+        let imgs = $dom.find('img');
+        imgs.each(function(index, element) { // 替换GIF图片到缩略图
+            let $this = $(element);
+            let url = $this.attr('src');
+            if(!/gif$/.test(url)) {
+                return;
+            }
+            url = url.replace(/(mw600|large|mw2000)/, 'thumb180');
+            $this.attr('src', url);
+        });
+        return $dom.html();
+    };
+
+    function render_gif_mask(element) {
+        let img = $(element);
+        // 去除先前的load事件
+        img.off('load');
+        let url = img.attr('src');
+        if (!/gif$/.test(url)) {
+            return;
+        }
+        // 将GIF遮罩的位置调整的和图片一致
+        let mask = $('<div class="gif-mask">PLAY</div>');
+        img.parent().css('position', 'relative');
+        let position = img.position();
+        mask.css({
+            'height': img.height(),
+            'width': img.width(),
+            'line-height': img.height() + 'px',
+            'left': position.left,
+            'top': position.top
+        });
+        img.after(mask);
+        // 将GIF遮罩点击加载动图
+        mask.click(function() {
+           let full_url = url.replace(/thumb180/, 'large');
+           img.attr('src', full_url).on('load', function() {
+               mask.remove();
+           });
+           mask.text('LOADING...');
+        });
+    }
+
+    function load_sidebar_list(url, list) {
+
+        let sidebarTPL = $("#sidebar-top-tpl");
+
+        // 有些场景没有这个模版，容错
+        if (sidebarTPL.length === 0) {
+            return;
+        }
+
+        // 热门-最近4小时
+        $.getJSON(url, function(data) {
+            if (data.code !== 0) {
+                return;
+            }
+
+            if (data.data.length === 0)
+                return;
+
+
+
+            let tpl = sidebarTPL.html();
+            let html = template.render(tpl, data);
+            //let list = $("#list-pic");
+            list.html(html);
+            // 绑定OOXX事件
+            bind_ooxx();
+
+            let images = list.find('img');
+            images.on('load', function() {
+                render_gif_mask(this);
+                list.trigger('img_loaded');
+            });
+            let img_loaded_count = 0;
+            list.on('img_loaded', function() {
+                img_loaded_count++;
+                // 触发的次数超过了总数，渲染展开按钮
+                if (img_loaded_count === images.length) {
+                    list.find('.hot-content').each(function() {
+                        if (this.scrollHeight > 200 ) {
+                            let hot_content = $(this);
+                            let show_more = $('<div class="show_more"> ↧  展开</div>');
+                            show_more.click(function() {
+                                let $this = $(this);
+                                if ($this.hasClass('expand')) {
+                                    $this.parent().css('max-height', '200px');
+                                    $this.removeClass('expand');
+                                    $this.text(' ↧  展开');
+                                } else {
+                                    $this.addClass('expand');
+                                    $this.parent().css('max-height', '100%');
+                                    $this.text(' ↥ 收起');
+                                }
+                            });
+                            hot_content.append(show_more);
+                        }
+                    });
+                }
+            });
+        }).fail(function(jqxhr, textStatus, error) {
+            console.error('Request Failed: ' + textStatus + ', ' + error);
+        });
+    }
+
+    function bind_ooxx() {
+        let btn = $('a.vote-btn');
+        btn.unbind('click');
+        btn.click(function () {
+            let $this = $(this);
+            if ($this.data('voted')) {
+                return;
+            }
+            const id = $this.data('id');
+            const type = $this.data('type');
+            $.ajax({
+                url: "/api/comment/vote", // 替换为你的 API 地址
+                type: "POST",
+                contentType: "application/json", // 设置请求头为 JSON
+                data: JSON.stringify({
+                    "comment_id": id,
+                    "like_type": type,
+                    "data_type": 'comment'
+                }),
+                success: function (response) {
+                    const span = $this.next('span');
+                    let num = parseInt(span.text());
+                    span.text(num + 1 );
+                    $this.data('voted', true);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Request failed:", status, error);
+                },
+            });
+        });
+    }
+
+    $(document).ready(function() {
+        // 图片懒加载
+        $("img.lazy").lazyload();
+
+        // 回到顶部按钮显示逻辑
+        $(window).scroll(function () {
+            let scrollTop = $(window).scrollTop();
+            if (scrollTop > 400) {
+                $("#nav_top").show().css('display', 'block');
+            } else {
+                $("#nav_top").hide();
+            }
+        });
+        // 回到顶部按钮点击逻辑
+        $("#nav_top").click(function () {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 100);
+        });
+
+        // 计算翻页按钮动态定位
+        function setPageBtnPosition() {
+            const $div = $('#main-warpper');
+            const $leftBtn = $('.nav-next');
+            const $rightBtn = $('.nav-prev');
+
+            if ($rightBtn.length === 0) {
+                return;
+            }
+
+            const rect = $div[0].getBoundingClientRect();
+
+            if ($leftBtn.length > 0) {
+                let leftGap = rect.left - 60;
+                // 左按钮：div 左边 + 10px
+                $leftBtn.css('left', leftGap);
+            }
+
+            // 右按钮：div 右边 - 10px - 按钮宽度
+            let rightGap = rect.right;
+            $rightBtn.css('left', rightGap);
+        }
+        // 事件绑定
+        $(window).on('resize scroll',setPageBtnPosition);
+        setPageBtnPosition();
+
+                // 悬浮浮窗
+        let floatDiv = $('#float-window');
+        if (floatDiv.length > 0) {
+            let floatOffset = floatDiv.offset();
+            floatDiv.data('top', floatOffset.top + 250);
+            $(window).scroll(function () {
+                let scrollTop = $(document).scrollTop();
+                let divTop = floatDiv.data('top');
+                if (scrollTop > divTop) {
+                    floatDiv.addClass('float-window');
+                    return;
+                }
+                floatDiv.removeClass('float-window');
+            });
+        }
+
+
+                // 侧边栏论坛数据渲染
+        $.getJSON('/api/forum/posts/112928?page=1', function(data) {
+            if (data.code !== 0) {
+                return;
+            }
+            let tpl = $("#sidebar-bbs-tpl").html();
+            let html = template.render(tpl, data.data);
+            $("#sidebar-bbs").html(html);
+        }).fail(function(jqxhr, textStatus, error) {
+            console.error('Request Failed: ' + textStatus + ', ' + error);
+        });
+
+        // 默认加载无聊图
+        load_sidebar_list('/api/top/post/26402', $('#list-pic'));
+
+        // 侧边栏热门切换
+        $('.hot-tabs li').click(function () {
+            let tab = this.id.split('-')[1];
+            let parent = $(this).parent();
+            parent.find('li').removeClass('current');
+            $('.sidebar .hot-list').addClass('d-none');
+            $(this).addClass('current');
+
+            let list = $('#list-' + tab);
+            list.removeClass('d-none');
+            if (list.children().length === 0) {
+                if (tab === 'hot') {
+                    load_sidebar_list('/api/top/4hr', list);
+                }
+                if (tab === 'ooxx') {
+                    load_sidebar_list('/api/top/post/26402', list);
+                }
+                if (tab === 'ooxx') {
+                    load_sidebar_list('/api/top/post/102312', list);
+                }
+            }
+        });
+                bind_ooxx();
+        $.getJSON('/api/post/dot', function(data) {});
+    });
+</script>
+<script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/vue/2.6.14/vue.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/axios/0.19.2/axios.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue-lazyload/1.2.6/vue-lazyload.js"></script>
+<script src="/wp-content/themes/jandan2025/static/20250418102219/e4c79715736d816dcb551be95d4e7f64CAU0t56j.js"></script>
+<script src="/wp-content/themes/jandan2025/static/20250418102219/4ea23b189cf988cd8df566b21cb5d586W2ZG8jM6.js"></script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "df5cec1c8c8b4360b35d8bdfafe0a19b"}'></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDE403EQ65"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZDE403EQ65');
+</script>
+</body>
+</html>

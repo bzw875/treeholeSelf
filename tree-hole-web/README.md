@@ -10,3 +10,8 @@
 ## TODO
 - 过滤讨厌的ID
 - 添加统计信息，记录最多OO的用户，最多XX的用户，最多发表的用户
+
+
+mvn clean package  -Dmaven.test.skip=true
+
+nohup java -jar treehole-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod &

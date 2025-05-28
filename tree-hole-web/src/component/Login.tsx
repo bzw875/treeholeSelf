@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { backendAPI } from '../backendAPI';
 
-const Login = () => {
+function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             const rps = await backendAPI.login(username, password);
@@ -12,14 +12,10 @@ const Login = () => {
             if (data.token) {
                 localStorage.setItem('userInfo', JSON.stringify({username, token: data.token}));
             }
-        } catch(e: any) {
-            console.error(e);
-            setErrMsg(e.message);
-            setTimeout(() => {
-                setErrMsg('');
-            }, 3000);
+        } catch(e: unknown) {
+            const error = e as { message: string };
+            console.error(error);
         }
-    }
     }
   return (
     <div>
@@ -31,6 +27,6 @@ const Login = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Login;

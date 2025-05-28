@@ -6,7 +6,7 @@ import Home from './component/Home';
 import Search from './component/Search';
 import Tail from './component/Tail';
 import Account from './component/Account';
-
+import Statistics from './component/Statistics';
 function App() {
 
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/author/:author" element={<Author />} />
           <Route path="/search/" element={<Search />} />
+          <Route path="/statistics" element={<Statistics />} />
         </Routes>
       </div>
       <Tail />

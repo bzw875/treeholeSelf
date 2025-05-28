@@ -24,8 +24,10 @@ import java.time.Year;
 import static java.lang.Integer.parseInt;
 
 
+import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 public class ScheduledTasks {
@@ -33,12 +35,15 @@ public class ScheduledTasks {
     @Autowired
     private TreeHoleService treeHoleService;
 
-    private Integer page = 100;
+    private Integer page = 1;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
 
-    @Scheduled(fixedRate = 3456)
+    @Scheduled(fixedRate = 6543)
     public void runEvery10Seconds() {
-        if (page > 63) {
+        if (page > 2) {
             return;
         }
         String url = getUrl(page);
@@ -48,20 +53,16 @@ public class ScheduledTasks {
     }
 
     public String getUrl(int page) {
-        Date d = new Date();
-        String str = Year.now() + "" + (d.getMonth() + 1) + "" + d.getDate() + "-" + page;
-        String baseStr = Base64.getEncoder().encodeToString(str.getBytes());
-        System.out.println(str + " " + baseStr);
-        return "https://jandan.net/treehole/" + baseStr;
+        return "https://jandan.net/api/comment/post/102312?order=desc&page=" + page;
     }
 
     public void save2Db(List<TreeHole> ths) {
         for (TreeHole th : ths) {
             String dataId = th.getDataId();
-            System.out.println(th.getAuthor());
             List<TreeHole> curs = treeHoleService.getTreeHoleByData_id(dataId);
             if (curs.size() == 0) {
                 treeHoleService.createTreeHole(th);
+                System.out.println("create:" + th.getAuthor());
             } else {
                 TreeHole oh = curs.get(0);
                 oh.setAuthor(th.getAuthor());
@@ -71,26 +72,38 @@ public class ScheduledTasks {
                 oh.setPostDate(th.getPostDate());
                 oh.setCommentNum(th.getCommentNum());
                 treeHoleService.updateTreeHole(curs.get(0).getId(), oh);
+                System.out.println("update:" + th.getAuthor());
             }
         }
     }
 
     public List<TreeHole> fetchLinks(String url) {
         List<TreeHole> ths = new ArrayList<>();
-        try {
-            Document doc = Jsoup.connect(url).get();
-//            String filePath = "/Users/mac/workspace/java/treehole2/00.html";
-//            String html = new String(Files.readAllBytes(Paths.get(filePath)));
-//            Document doc = Jsoup.parse(html);
 
-            // 选择所有链接
-            Elements linkElements = doc.select(".commentlist>li");
-            for (Element li : linkElements) {
-                ths.add(this.createRecord(li));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            // 创建请求头
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("Authorization", "Bearer your_access_token");
+            headers.set("X-Custom-Header", "Custom Value");
+
+            // 创建请求体（JSON）
+            String requestBody = "{\"key\": \"value\", \"number\": 123}";
+
+            // 创建HTTP请求实体
+            HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+
+            // 发送POST请求并获取响应
+            ResponseEntity<String> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.POST,
+                    requestEntity,
+                    String.class
+            );
+            System.out.println(response);
+
+//            for (Element li : linkElements) {
+//                ths.add(this.createRecord(li));
+//            }
         return ths;
     }
 

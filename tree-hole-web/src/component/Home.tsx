@@ -47,11 +47,15 @@ function App() {
       });
       const data: any = rps.data;
       if (data.content) {
-        setTreeHoles(data.content || []);
-        setTotal(data.totalElements);
+        if (Array.isArray(data.content)) {
+          setTreeHoles(data.content || []);
+          setTotal(data.totalElements);
+        }
       } else {
-        setTreeHoles(data || []);
-        setTotal(data.length);
+        if (Array.isArray(data)) {
+          setTreeHoles(data || []);
+          setTotal(data.length);
+        }
       }
     } catch (error) {
       console.error("Error fetching data: ", error);
