@@ -15,6 +15,14 @@ export interface TreeHoleType {
     user_id: number;
 }
 
+export interface StatisticsType {
+    articles_posted: number;
+    author: string;
+    comments_received: number;
+    total_dislikes: number;
+    total_likes: number;
+}
+
   
 export enum SortEnum {
     ASC = 'ASC',

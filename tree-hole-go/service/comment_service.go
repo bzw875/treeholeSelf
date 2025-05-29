@@ -1,6 +1,7 @@
 package service
 
 import (
+	"strings"
 	"treehole/database"
 	"treehole/models"
 )
@@ -11,8 +12,6 @@ type CommentQuery struct {
 	Size      int    `form:"size" binding:"required,min=1,max=100"`
 	Field     string `form:"field"`                         // 排序字段
 	Sort      string `form:"sort" binding:"oneof=ASC DESC"` // 排序方向
-	Keyword   string `form:"keyword"`                       // 内容关键词
-	Author    string `form:"author"`                        // 作者
 	LikeRange string `form:"likeRange"`                     // 点赞范围
 }
 
@@ -20,6 +19,8 @@ func GetComments(query CommentQuery) (models.ResponseData, error) {
 	var result models.ResponseData
 	var comments []models.Comment
 	db := database.DB
+
+	// http://dev.soulapp-inc.cn:8080/#?page=0&size=20&sort=DESC&field=date_gmt&likeRange=101-200
 
 	// 设置默认值
 	if query.Page < 0 {
@@ -35,12 +36,16 @@ func GetComments(query CommentQuery) (models.ResponseData, error) {
 		query.Sort = "DESC"
 	}
 
-	// 构建查询
-	if query.Keyword != "" {
-		db = db.Where("content LIKE ?", "%"+query.Keyword+"%")
-	}
-	if query.Author != "" {
-		db = db.Where("author = ?", query.Author)
+	if query.LikeRange != "" {
+		// Parse like range in format "min-max"
+		if ranges := strings.Split(query.LikeRange, "-"); len(ranges) == 2 {
+			minLikes, maxLikes := ranges[0], ranges[1]
+			if maxLikes == "∞" {
+				db = db.Where("vote_positive >= ?", minLikes)
+			} else {
+				db = db.Where("vote_positive BETWEEN ? AND ?", minLikes, maxLikes)
+			}
+		}
 	}
 
 	// 获取总数

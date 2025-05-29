@@ -17,6 +17,7 @@ function App() {
           <ul className='flex flex-row items-center flex-1'>
             <li className='mr-4'><Link to="/">Home</Link></li>
             <li className='mr-4'><Link to="/Search">Search</Link></li>
+            <li className='mr-4'><Link to="/statistics">Statistics</Link></li>
           </ul>
           <Account />
         </nav>

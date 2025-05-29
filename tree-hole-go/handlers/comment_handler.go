@@ -65,3 +65,7 @@ func GetCommentsBySearch(c *gin.Context) {
 		Data: data,
 	})
 }
+
+func GetCommentsStatic(c *gin.Context) {
+
+}

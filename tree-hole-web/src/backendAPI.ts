@@ -1,4 +1,4 @@
-import { SortEnum, FieldEnum, RangeNum, TreeHoleType } from "./interface";
+import { SortEnum, FieldEnum, RangeNum, TreeHoleType, StatisticsType } from "./interface";
 import axios from 'axios';
 
 let baseURL = '/backend';
@@ -84,4 +84,8 @@ export const backendAPI = {
     login: (username: string, password: string) => {
         return instance.get('/login?username=' + username + '&password=' + password);
     },
+
+    fetchStatistics: () => {
+        return instance.get<ResponseType<StatisticsType>>('/treehole/static');
+    }
 }

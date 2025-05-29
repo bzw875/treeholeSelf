@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8080', // 你的后端 API 服务器地址
+        target: 'http://127.0.0.1:9000', // 你的后端 API 服务器地址
         changeOrigin: true,
         bypass: (req, res) => {
           // 转发特定的请求头

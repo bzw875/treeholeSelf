@@ -5,7 +5,6 @@ import (
 	"treehole/database"
 	"treehole/models"
 	"treehole/routes"
-	"treehole/service"
 )
 
 func main() {
@@ -19,13 +18,11 @@ func main() {
 		log.Fatal("Failed to migrate database:", err)
 	}
 
-	go service.ImportJson()
-
 	// 设置路由
 	r := routes.SetupRouter()
 
 	// 启动服务器
-	if err := r.Run(":8080"); err != nil {
+	if err := r.Run(":9000"); err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
 }
