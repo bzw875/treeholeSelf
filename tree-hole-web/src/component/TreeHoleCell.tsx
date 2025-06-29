@@ -1,9 +1,14 @@
+import { useMemo } from 'react';
 import { TreeHoleType } from '../interface';
 import { timeFromNow } from '../utils';
 import { Link } from 'react-router-dom';
 
 function TreeHoleCell(props: {treeHole: TreeHoleType}) {
     const { author, content, post_id, vote_negative, vote_positive, sub_comment_count, date_gmt, ip_location } = props.treeHole;
+
+    const imgUrl = useMemo(() => {
+        return content.match(/<img src="([^"]+)"/)?.[1]
+    }, [post_id])
   return (
     <div className='text-base	text-slate-400 mb-12'>
         <div className='flex mb-2 flex-wrap'>
@@ -17,9 +22,14 @@ function TreeHoleCell(props: {treeHole: TreeHoleType}) {
               <div className='ml-2'>评论: {sub_comment_count}</div>
             </div>
         </div>
-        <div className='text-slate-800'>{content}</div>
+        <div className='text-slate-800 whitespace-pre-wrap'>{removeImgTag(content)}</div>
+        {imgUrl && <img src={imgUrl} alt="tree hole" />}
     </div>
   );
+}
+
+const removeImgTag = (content: string) => {
+    return content.replace(/<img src="([^"]+)".*\/>/g, '')
 }
 
 export default TreeHoleCell

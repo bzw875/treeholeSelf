@@ -5,6 +5,7 @@ import (
 	"treehole/database"
 	"treehole/models"
 	"treehole/routes"
+	"treehole/service"
 )
 
 func main() {
@@ -17,6 +18,8 @@ func main() {
 	if err := database.DB.AutoMigrate(&models.Comment{}); err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
+
+	service.Batch()
 
 	// 设置路由
 	r := routes.SetupRouter()

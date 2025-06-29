@@ -87,5 +87,9 @@ export const backendAPI = {
 
     fetchStatistics: () => {
         return instance.get<ResponseType<StatisticsType>>('/treehole/static');
+    },
+
+    fetchAish123: () => {
+        return instance.get<ResponseType<TreeHoleType>>('/aish/posts');
     }
 }

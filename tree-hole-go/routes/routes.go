@@ -30,6 +30,10 @@ func SetupRouter() *gin.Engine {
 			treehole.GET("/search", handlers.GetCommentsBySearch)         // 关键词搜索
 			treehole.GET("/static", handlers.GetUserStatistics)           // 用户统计数据
 		}
+		aish := api.Group("/aish")
+		{
+			aish.GET("/posts", handlers.QueryAishPost)
+		}
 	}
 
 	return r

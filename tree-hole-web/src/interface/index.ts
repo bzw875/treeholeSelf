@@ -15,6 +15,19 @@ export interface TreeHoleType {
     user_id: number;
 }
 
+export interface AishType {
+    title: string;
+    articleUrl: string;
+    articleId: string;
+    area: string;
+    isNewUserPost: boolean;
+    author: string;
+    replyCount: number;
+    readCount: number;
+    lastReplier: string;
+    lastReplyTime: Date;
+}
+
 export interface StatisticsType {
     articles_posted: number;
     author: string;

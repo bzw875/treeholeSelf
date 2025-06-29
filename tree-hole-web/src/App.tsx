@@ -7,6 +7,7 @@ import Search from './component/Search';
 import Tail from './component/Tail';
 import Account from './component/Account';
 import Statistics from './component/Statistics';
+import Aish123 from './component/Aish123';
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
             <li className='mr-4'><Link to="/">Home</Link></li>
             <li className='mr-4'><Link to="/Search">Search</Link></li>
             <li className='mr-4'><Link to="/statistics">Statistics</Link></li>
+            <li className='mr-4'><Link to="/aish123">Aish123</Link></li>
           </ul>
           <Account />
         </nav>
@@ -27,6 +29,7 @@ function App() {
           <Route path="/author/:author" element={<Author />} />
           <Route path="/search/" element={<Search />} />
           <Route path="/statistics" element={<Statistics />} />
+          <Route path="/aish123" element={<Aish123 />} />
         </Routes>
       </div>
       <Tail />
