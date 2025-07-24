@@ -4,7 +4,7 @@ import { timeFromNow } from '../utils';
 import { Link } from 'react-router-dom';
 
 function TreeHoleCell(props: {treeHole: TreeHoleType}) {
-    const { author, content, post_id, vote_negative, vote_positive, sub_comment_count, date_gmt, ip_location } = props.treeHole;
+    const { author, content, id, post_id, vote_negative, vote_positive, sub_comment_count, date_gmt, ip_location } = props.treeHole;
 
     const imgUrl = useMemo(() => {
         return content.match(/<img src="([^"]+)"/)?.[1]
@@ -13,7 +13,7 @@ function TreeHoleCell(props: {treeHole: TreeHoleType}) {
     <div className='text-base	text-slate-400 mb-12'>
         <div className='flex mb-2 flex-wrap'>
             <Link target='_blank' className='text-slate-800' to={"/author/" + author}>{author}</Link>
-            <a className='ml-4' href={"https://jandan.net/t/" + post_id} target='_blank'>{post_id}</a>
+            <a className='ml-4' href={"https://jandan.net/t/" + id} target='_blank'>{id}</a>
             <div className='flex flex-1 justify-end'>
               <div>{timeFromNow(date_gmt)}</div>
               <div className='ml-2'>IP: {ip_location}</div>

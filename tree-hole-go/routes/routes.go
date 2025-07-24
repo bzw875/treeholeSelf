@@ -34,6 +34,11 @@ func SetupRouter() *gin.Engine {
 		{
 			aish.GET("/posts", handlers.QueryAishPost)
 		}
+
+		agent := api.Group("/agent")
+		{
+			agent.POST("/doubao", handlers.ProxyAgent)
+		}
 	}
 
 	return r

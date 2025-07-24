@@ -25,7 +25,7 @@ func main() {
 	r := routes.SetupRouter()
 
 	// 启动服务器
-	if err := r.Run(":9000"); err != nil {
+	if err := r.Run(":8000"); err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
 }
