@@ -104,6 +104,12 @@ export const backendAPI = {
 		return instance.get<ResponseType<TreeHoleType>>("/aish/posts");
 	},
 
+	queryQwen: (prompt: string) => {
+		return instance.post("/agent/qwen", {
+			prompt,
+		});
+	},
+
 	queryAi: (prompt: string) => {
 		const data = {
 			model: "doubao-seed-1-6-flash-250615",
@@ -123,24 +129,3 @@ export const backendAPI = {
 		return instance.post("/agent/doubao", data);
 	},
 };
-
-// export const queryAi = async (prompt: string) => {
-//   const doubaoUrl = 'https://ark.cn-beijing.volces.com/api/v3/chat/completions';
-
-//   return axios.post(doubaoUrl, {
-//       model: 'doubao-seed-1-6-flash-250615',
-//       messages: [{
-//           content: [{
-//               text: prompt,
-//               type: 'text'
-//           }],
-//           role: 'user'
-//       }],
-//       stream: false
-//   }, {
-//       headers: {
-//           'Content-Type': 'application/json',
-//           'Authorization': `Bearer f29e2b54-b1e8-42ae-9155-080f22feb686`
-//       }
-//   })
-// }

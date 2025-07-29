@@ -116,7 +116,10 @@ function App() {
             onFieldChange={(field) => { setField(field)}}
             onSortChange={(sort) => {setSort(sort)}}
           />
-          <FilterBar likeRange={likeRange} onLikeRangeChange={num => setLikeRange(num)} />
+          <FilterBar likeRange={likeRange} onLikeRangeChange={num => {
+            setLikeRange(num);
+            setPage(0);
+          }} />
         </div>
         <div className="tree-hole-list pt-20">
           {treeHoles.map((tmp) => (
