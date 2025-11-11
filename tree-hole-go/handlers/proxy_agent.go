@@ -42,7 +42,7 @@ func ProxyAgent(c *gin.Context) {
 	}
 	proxyReq.Body = io.NopCloser(bytes.NewReader(jsonBytes))
 	proxyReq.Header.Set("Content-Type", "application/json")
-	proxyReq.Header.Set("Authorization", "Bearer ")
+	proxyReq.Header.Set("Authorization", "Bearer f29e2b54-b1e8-42ae-9155-080f22feb686")
 
 	// 发送请求
 	resp, err := client.Do(proxyReq)

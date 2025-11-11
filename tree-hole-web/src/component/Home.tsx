@@ -33,7 +33,7 @@ function App() {
   const [isBottom, setIsBottom] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleQuery = useCallback(debounce(async (page, size, field, sort, likeRange) => {
+  const handleQuery = async (page, size, field, sort, likeRange) => {
     setIsLoading(true);
     setTreeHoles([]);
     setTotal(0);
@@ -54,7 +54,7 @@ function App() {
       console.error("Error fetching data: ", error);
     }
     setIsLoading(false);
-  }, 1000), []);
+  }
   
   const save2Url = () => {
     const params = {
@@ -83,9 +83,15 @@ function App() {
 
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft') {
-        setPage(page - 1);
+        setPage(prePage => {
+          console.log('prePage', event.key, prePage);
+          return prePage - 1 < 0 ? 0 : prePage - 1;
+        });
       } else if (event.key === 'ArrowRight') {
-        setPage(page + 1);
+        setPage(prePage => {
+          console.log('prePage', event.key, prePage);
+          return prePage + 1;
+        });
       }
     };
 
@@ -95,7 +101,7 @@ function App() {
     // 清理事件监听器
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.addEventListener('keydown', handleKeyPress);
+      document.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
 
