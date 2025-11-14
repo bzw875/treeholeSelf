@@ -19,7 +19,6 @@ function Statistics() {
 
   return (
     <div>
-      <h1>Login</h1>
 <table className="table-auto w-full">
   <thead>
     <tr>
@@ -33,7 +32,7 @@ function Statistics() {
   <tbody>
     {data.map((item) => (
       <tr key={item.id}>
-        <td>{item.author}</td>
+        <td><a className="text-blue-500" href={`/author/${item.author}`}>{item.author}</a></td>
         <td>{item.articles_posted}</td>
         <td>{item.total_likes}</td>
         <td>{item.total_dislikes}</td>

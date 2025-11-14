@@ -1,3 +1,4 @@
+import { message } from "antd";
 import {
 	SortEnum,
 	FieldEnum,
@@ -39,12 +40,13 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
 	(response) => {
 		console.log(response);
-		if (response.data.code === 401) {
-			localStorage.removeItem("userInfo");
-		}
 		return response;
 	},
 	(error) => {
+		if (error.status === 401) {
+			message.error('Login expired');
+			location.href = '/login';
+		}
 		console.log(error);
 		return Promise.reject(error);
 	},
@@ -91,9 +93,17 @@ export const backendAPI = {
 		);
 	},
 	login: (username: string, password: string) => {
-		return instance.get(
-			"/login?username=" + username + "&password=" + password,
+		return instance.post(
+			"/auth/login",
+			{
+				username,
+				password,
+			},
 		);
+	},
+
+	logout: () => {
+		return instance.post("/auth/logout");
 	},
 
 	fetchStatistics: () => {

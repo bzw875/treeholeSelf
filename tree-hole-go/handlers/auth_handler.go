@@ -47,15 +47,33 @@ func Login(c *gin.Context) {
 	token := generateToken(user.ID)
 	tokenStore[token] = user.ID
 
+	// 设置 cookie（有效期 7 天）
+	c.SetCookie(
+		"token",    // cookie 名称
+		token,      // cookie 值
+		7*24*60*60, // 过期时间（秒），7天
+		"/",        // 路径
+		"",         // 域名（空表示当前域名）
+		false,      // 是否只在 HTTPS 下传输
+		true,       // 是否禁止 JavaScript 访问（HttpOnly）
+	)
+
 	response := models.AuthResponse{
 		Code: 200,
 		Msg:  "登录成功",
 	}
-	response.Data.Token = token
 	response.Data.UserID = user.ID
 	response.Data.Username = user.Username
 
 	c.JSON(http.StatusOK, response)
+}
+
+func Logout(c *gin.Context) {
+	c.SetCookie("token", "", -1, "/", "", false, true)
+	c.JSON(http.StatusOK, models.AuthResponse{
+		Code: 200,
+		Msg:  "退出成功",
+	})
 }
 
 // GetTokenUserID 从 token 获取用户ID（用于中间件）
@@ -67,24 +85,15 @@ func GetTokenUserID(token string) (uint, bool) {
 // AuthMiddleware 认证中间件
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token := c.GetHeader("Authorization")
-		if token == "" {
-			// 尝试从 query 参数获取
-			token = c.Query("token")
-		}
-
-		if token == "" {
+		// 从 cookie 中获取 token
+		token, err := c.Cookie("token")
+		if err != nil || token == "" {
 			c.JSON(http.StatusUnauthorized, models.AuthResponse{
 				Code: 401,
 				Msg:  "未提供认证 token",
 			})
 			c.Abort()
 			return
-		}
-
-		// 移除 "Bearer " 前缀（如果存在）
-		if len(token) > 7 && token[:7] == "Bearer " {
-			token = token[7:]
 		}
 
 		userID, exists := GetTokenUserID(token)

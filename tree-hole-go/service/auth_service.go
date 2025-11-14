@@ -5,7 +5,6 @@ import (
 	"treehole/database"
 	"treehole/models"
 
-	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
@@ -22,7 +21,7 @@ func Login(req models.LoginRequest) (*models.User, error) {
 	}
 
 	// 验证密码
-	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(req.Password)); err != nil {
+	if user.Password != req.Password {
 		return nil, errors.New("用户名或密码错误")
 	}
 

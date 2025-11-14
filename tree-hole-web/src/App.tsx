@@ -5,12 +5,19 @@ import Author from './component/Author';
 import Home from './component/Home';
 import Search from './component/Search';
 import Tail from './component/Tail';
-import Account from './component/Account';
 import Statistics from './component/Statistics';
 import Aish123 from './component/Aish123';
 import Agent from './component/Agent';
 import QwenChat from './component/QwenAgent';
+import Login from './component/Login';
+import { backendAPI } from './backendAPI';
 function App() {
+
+  const handleLogout = () => {
+    backendAPI.logout().then(() => {
+      location.href = '/login';
+    });
+  }
 
   return (
 
@@ -25,7 +32,7 @@ function App() {
             <li className='mr-4'><Link to="/agent">Agent</Link></li>
             <li className='mr-4'><Link to="/qwen">Qwen</Link></li>
           </ul>
-          <Account />
+          <button type="button" onClick={handleLogout}>logout</button>
         </nav>
 
         <Routes>
@@ -36,6 +43,7 @@ function App() {
           <Route path="/aish123" element={<Aish123 />} />
           <Route path="/agent" element={<Agent />} />
           <Route path="/qwen" element={<QwenChat />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
       <Tail />
