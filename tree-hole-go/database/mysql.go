@@ -12,6 +12,7 @@ var DB *gorm.DB
 
 func InitDB() error {
 	cfg := config.GetDatabaseConfig()
+	fmt.Println(cfg)
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		cfg.User,
 		cfg.Password,

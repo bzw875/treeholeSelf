@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"treehole/database"
 	"treehole/models"
 	"treehole/routes"
@@ -24,8 +25,13 @@ func main() {
 	// 设置路由
 	r := routes.SetupRouter()
 
+	port := ":8000"
+	if os.Getenv("GO_ENV") == "production" {
+		port = ":80"
+	}
+
 	// 启动服务器
-	if err := r.Run(":8000"); err != nil {
+	if err := r.Run(port); err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
 }
