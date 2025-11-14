@@ -15,7 +15,7 @@ func main() {
 	}
 
 	// 自动迁移数据库结构
-	if err := database.DB.AutoMigrate(&models.Comment{}); err != nil {
+	if err := database.DB.AutoMigrate(&models.Comment{}, &models.User{}); err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
 

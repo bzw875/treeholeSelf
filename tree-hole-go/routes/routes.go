@@ -22,6 +22,12 @@ func SetupRouter() *gin.Engine {
 	})
 	api := r.Group("/api")
 	{
+		// 认证相关路由
+		auth := api.Group("/auth")
+		{
+			auth.POST("/login", handlers.Login) // 用户登录
+		}
+
 		// 树洞相关路由
 		treehole := api.Group("/treehole")
 		{
